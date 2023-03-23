@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Presentación de Mi Aplicación Web</title>
+    <style>
+      /* Estilos para la presentación */
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      img,
+      video {
+        width: 500px;
+      }
+
+      p {
+        width: 650px;
+        margin: auto;
+      }
+      h1 {
+        color: #007bff;
+      }
+      .slide {
+        display: none;
+      }
+      .active {
+        display: block;
+      }
+      #footer {
+        margin-top: auto;
+        font-size: 12px;
+        color: #888;
+        padding: 10px;
+      }
+      #footer span {
+        margin-left: 10px;
+        font-size: 20px;
+      }
+      #navigation {
+        margin-top: 30px;
+      }
+      #navigation button {
+        margin: 0 10px;
+      }
+      /* Estilos para los botones desactivados */
+      button[disabled] {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      /* Estilos para el elemento vacío que mantiene el footer pegajoso */
+      #empty {
+        flex: 1 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Presentación de Mi Mobile Checkout</h1>
+    <div class="slide active">
+      <h2>Paso 0: Introducción</h2>
+      <p>
+        Cuando estas en Disney Springs (es un shopping al aire libre) los
+        locales ofrecen un mobile checkout.
+        <br />
+        <br />
+        En que consiste ? Desde la app movil “My Disney Experience” es posible
+        agregar a la cesta productos del local, pagar y saltar la cola mostrando
+        un QR.
+        <br />
+        <br />
+        <h3>
+            Para saltar la cola e ir directamente a retirar los productos:
+        </h3>
+        <br />
+        <img src="./disney1.jpeg" alt="" />
+        <br />
+        <br />
+        <h3>
+            Totem que nos guia en como usar el Mobile Checkout en el local:
+        </h3>
+        <br />
+        <br />
+        <img src="./disney2.jpeg" alt="" />
+        <br />
+        <br />
+
+        <h3>
+            Pantallas de la app:
+        </h3>
+        <br />
+        <br />
+        <img src="./disney3.png" alt="" />
+        <br />
+        <br />
+        <img src="./disney4.png" alt="" />
+        <br />
+        <br />
+        <img src="./disney5.png" alt="" />
+      </p>
+    </div>
+    <div class="slide">
+      <h2>Paso 1: Introducción</h2>
+      <img src="iphone1.png" alt="" />
+      <p>
+        Bienvenidos a mi aplicación web. Esta aplicación es una herramienta muy
+        útil para hacer...
+      </p>
+    </div>
+    <div class="slide">
+      <h2>Paso 2: Funcionalidades</h2>
+      <img src="iphone2.png" alt="" />
+      <p>Entre las funcionalidades de la aplicación se encuentran...</p>
+    </div>
+    <div class="slide">
+      <h2>Paso 3: Cómo empezar</h2>
+      <img src="iphone3.png" alt="" />
+      <p>Para empezar a utilizar la aplicación, es necesario...</p>
+    </div>
+    <div class="slide">
+      <h2>Paso 4: Conclusiones</h2>
+      <img src="iphone4.png" alt="" />
+      <p>
+        Esperamos que disfrutes utilizando nuestra aplicación. Para cualquier
+        duda o consulta, no dudes en contactarnos.
+      </p>
+    </div>
+    <div class="slide">
+      <h2>Paso 4: Conclusiones</h2>
+      <img src="iphone5.png" alt="" />
+      <p>
+        Esperamos que disfrutes utilizando nuestra aplicación. Para cualquier
+        duda o consulta, no dudes en contactarnos.
+      </p>
+    </div>
+    <div class="slide">
+      <h2>Paso 4: Conclusiones</h2>
+      <img src="iphone6.png" alt="" />
+      <p>
+        Esperamos que disfrutes utilizando nuestra aplicación. Para cualquier
+        duda o consulta, no dudes en contactarnos.
+      </p>
+    </div>
+
+    <div class="slide">
+      <h2>Paso 7: Conclusiones</h2>
+      <video src="./video.mp4" controls muted></video>
+      <p>
+        Esperamos que disfrutes utilizando nuestra aplicación. Para cualquier
+        duda o consulta, no dudes en contactarnos.
+      </p>
+    </div>
+
+    <div id="navigation">
+      <button onclick="previousSlide()" disabled>Anterior</button>
+      <button onclick="nextSlide()">Siguiente</button>
+    </div>
+    <div id="footer">
+      <p>
+        Este sitio ha sido generado por inteligencia artificial con ayuda de un
+        humano<span>🤖👨‍💻</span>
+      </p>
+    </div>
+    <script>
+      // Función para avanzar a la siguiente slide
+      let currentSlide = 0;
+      const slides = document.getElementsByClassName("slide");
+      const prevButton = document.querySelector(
+        "#navigation button:first-of-type"
+      );
+      const nextButton = document.querySelector(
+        "#navigation button:last-of-type"
+      );
+      const updateButtons = () => {
+        prevButton.disabled = currentSlide === 0;
+        nextButton.disabled = currentSlide === slides.length - 1;
+      };
+      const showSlide = () => {
+        slides[currentSlide].classList.add("active");
+        updateButtons();
+      };
+      const hideSlide = () => slides[currentSlide].classList.remove("active");
+      const nextSlide = () => {
+        hideSlide();
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide();
+      };
+      const previousSlide = () => {
+        hideSlide();
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide();
+      };
+      showSlide();
+    </script>
+  </body>
+</html>
